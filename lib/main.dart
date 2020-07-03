@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/views/homepage.dart';
+import 'package:newsapp/pages/newsListPage.dart';
+import 'package:newsapp/viewmodels/newsArticleListViewModel.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(App());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class App extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
-      title: 'Flutter News App',
+      title: "Sayyid News",
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.white,
-      ),
-      home: HomePage(),
+      home: 
+      ChangeNotifierProvider(
+        builder: (_) => NewsArticleListViewModel(), 
+        child: NewsListPage()
+      )
     );
+    
   }
+
 }
+
